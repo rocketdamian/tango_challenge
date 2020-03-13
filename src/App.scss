@@ -1,0 +1,59 @@
+@import "~react-bulma-components/src/index.sass";
+@import "./_variables.sass";
+
+$body-background-color: #fafafa;
+$border-color: #e1e3ea;
+$white: #fff;
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  background-color: $body-background-color;
+}
+
+.border {
+  border: 1px solid $border-color;
+}
+
+.border-right {
+  @media only screen and (min-width: 768px) {
+    border-right: 1px solid $border-color; 
+  }
+}
+
+.bg-white {
+  background-color: $white;
+}
+
+.float-right {
+  @media only screen and (min-width: 768px) {
+    float: right;
+  }
+  
+}
+
+.blue-350-text {
+  color: $blue-350;
+}
+
+.blue-400-text {
+  color: $blue-400;
+}
+
+.grey-300-text {
+  color: $grey-300;
+}
+
+.badge {
+  background-color: $blue-400;
+  color: #fff;
+  font-size: 10px;
+  padding: 4px 6px;
+  border-radius: 12px;
+  line-height: 9px;
+  display: inline-block;
+  margin-left: 4px;
+}

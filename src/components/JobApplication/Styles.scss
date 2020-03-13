@@ -1,0 +1,223 @@
+@import "../../_variables.sass";
+
+.job-application-card-wrapper {
+  padding: 2rem;
+
+  .job-application-user-card {
+    background: #fbfbfd 0% 0% no-repeat padding-box;
+    text-align: center;
+    position: relative;
+    .job-application-user-card-close {
+      position: absolute;
+      right: 10px;
+      top: 2px;
+      opacity: 0.5;
+    }
+    .job-application-card-user-info {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      .job-application-card-user-image-wrapper {
+        width: 85px;
+        height: 85px;
+        margin: auto;
+        position: absolute;
+        padding: 4px;
+        img {
+          width: 85px;
+          height: 77px;
+        }
+      }
+      .job-application-match-label {
+        display: block;
+        font-size: 10px;
+        text-transform: uppercase;
+        color: $blue-200;
+      }
+      .job-application-user-name {
+        display: block;
+        font-size: 18px;
+        color: $blue-300;
+        font-weight: 600;
+      }
+      .job-application-premium-badge {
+        width: 16px;
+        height: 16px;
+        background-color: $orange-200;
+        display: inline-block;
+        border-radius: 50%;
+        > svg {
+          display: block;
+          fill: #fff;
+        }
+      }
+      .job-application-user-location {
+        display: block;
+        font-size: 12px;
+        color: $black-300;
+        font-weight: 600;
+      }
+      .job-application-user-description {
+        display: block;
+        font-size: 12px;
+        font-style: italic;
+        color: $black-200;
+        margin-top: 4px;
+      }
+    }
+    .job-application-card-action-buttons {
+      .column:first-child {
+        @media only screen and (max-width: 768px) {
+          border-bottom: 1px solid $grey-100;
+        }
+
+        @media only screen and (min-width: 768px) {
+          border-right: 1px solid $grey-100;
+        }
+      }
+      button {
+        cursor: pointer;
+        width: 100%;
+        border: none;
+        background-color: $blue-300;
+        height: 100%;
+        opacity: 0.4;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 12px;
+        padding: 11px;
+        line-height: 12px;
+        font-weight: 500;
+        > svg {
+          fill: #fff;
+          vertical-align: bottom;
+          margin-right: 4px;
+        }
+      }
+    }
+  }
+
+  .job-application-summary {
+    padding: 32px 26px;
+    > .job-application-resume-item {
+      line-height: 16px;
+      border-bottom: 1px solid $grey-250;
+      padding-top: 6px;
+      padding-bottom: 6px;
+      > .job-application-resume-item-title {
+        font-size: 14px;
+        font-weight: 600;
+      }
+      > .job-application-resume-item-year {
+        font-size: 12px;
+        font-weight: 600;
+      }
+    }
+    .job-application-resume-item-job {
+      font-size: 12px;
+    }
+    .job-application-info {
+      margin-top: 16px;
+      font-size: 12px;
+      line-height: 25px;
+      font-weight: 600;
+    }
+
+    .job-application-connections-images {
+      display: inline-block;
+      vertical-align: top;
+      margin-left: 12px;
+      .job-application-connections {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-left: -6px;
+        border: 1px solid #fff;
+        &.image {
+          background-repeat: no-repeat;
+          background-size: 30px;
+          background-position: initial;
+          opacity: 0.7;
+        }
+        &.more {
+          background-color: $blue-400;
+          position: absolute;
+          font-size: 9px;
+          color: #fff;
+          text-align: center;
+          line-height: 22px;
+        }
+      }
+    }
+
+    .job-application-connections-image-wrapper {
+      width: 25px;
+      height: 25px;
+      display: inline-block;
+    }
+  }
+}
+
+$spacing: 1rem;
+$themeColor: $blue-200;
+$backColor: $grey-200;
+$textShadow: rgba(black, 0.35) 1px 1px 1px;
+
+.progress--circle {
+  position: relative;
+  display: inline-block;
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  background-color: $backColor;
+  &:before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 81px;
+    height: 81px;
+    border-radius: 50%;
+    background-color: white;
+  }
+  &:after {
+    content: "";
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: $themeColor;
+  }
+}
+
+.progress__number {
+  position: absolute;
+  top: 50%;
+  width: 100%;
+  line-height: 1;
+  margin-top: -0.75rem;
+  text-align: center;
+  font-size: 1.5rem;
+  color: #777;
+}
+
+$step: 1;
+$loops: round(100 / $step);
+$increment: 360 / $loops;
+$half: round($loops / 2);
+@for $i from 0 through $loops {
+  .progress--bar.progress--#{$i * $step}:after {
+    width: $i * $step * 1%;
+  }
+  .progress--circle.progress--#{$i * $step}:after {
+    @if $i < $half {
+      $nextDeg: 90deg + ($increment * $i);
+      background-image: linear-gradient(90deg, $backColor 50%, transparent 50%, transparent),
+        linear-gradient($nextDeg, $themeColor 50%, $backColor 50%, $backColor);
+    } @else {
+      $nextDeg: -90deg + ($increment * ($i - $half));
+      background-image: linear-gradient($nextDeg, $themeColor 50%, transparent 50%, transparent),
+        linear-gradient(270deg, $themeColor 50%, $backColor 50%, $backColor);
+    }
+  }
+}
